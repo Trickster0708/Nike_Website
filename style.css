@@ -1,0 +1,512 @@
+:root {
+    --white: #ffffff;
+    --black: #111111;
+    --carbon: #0b0b0b;
+    --font-heading: 'Antonio', sans-serif;
+    --font-body: 'Archivo Narrow', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--black);
+    background-color: var(--black);
+    /* Starting dark for the hero */
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    line-height: 0.85;
+}
+
+/* Button Component */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.8rem;
+    border-radius: 30px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: scale(1.02);
+}
+
+.btn-dark {
+    background-color: var(--black);
+    color: var(--white);
+    border: 1px solid var(--black);
+}
+
+.btn-dark:hover {
+    background-color: #333;
+}
+
+.btn-overlay {
+    background-color: var(--white);
+    color: var(--black);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 
+=========================================
+1. Core Visual Architecture (Hero)
+=========================================
+*/
+#hero-section {
+    position: relative;
+    width: 100vw;
+    height: 500vh;
+    /* Reduced from 800vh to make the scroll faster through the frames */
+    background-color: var(--black);
+}
+
+.canvas-container {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ambient Canvas: Blurred, saturated, covers screen */
+#ambient-canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110vw;
+    height: 110vh;
+    object-fit: cover;
+    filter: blur(40px) saturate(1.2);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Foreground Canvas: Sharp, contained, feathered mask */
+#tiger-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Preserves 100% of the centered branding text */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Background text visually behind the cheetah foreground */
+.hero-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    /* Behind foreground, above ambient */
+    text-align: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.hero-title {
+    color: var(--white);
+    font-size: clamp(3rem, 15vw, 12rem);
+    white-space: nowrap;
+    text-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    margin: 0;
+}
+
+
+/* 
+=========================================
+2. Post-Hero Landing Experience
+=========================================
+*/
+#post-hero {
+    background-color: var(--white);
+    position: relative;
+    z-index: 4;
+    /* On top of the sticky hero when scrolled past */
+}
+
+/* P1: First Look */
+.section-p1 {
+    padding: 8rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: var(--white);
+}
+
+.section-p1 .eyebrow {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-bottom: 1rem;
+}
+
+.section-p1 .title {
+    font-size: clamp(4rem, 12vw, 8rem);
+    margin-bottom: 1.5rem;
+}
+
+.section-p1 .description {
+    max-width: 600px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    color: var(--carbon);
+}
+
+.product-image-container {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 4rem;
+    overflow: hidden;
+}
+
+.product-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* P2: Best of Air Max Carousel */
+.section-p2 {
+    padding: 4rem 2rem;
+    background-color: var(--white);
+}
+
+.carousel-title {
+    font-size: clamp(3rem, 8vw, 4rem);
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+}
+
+.carousel-wrapper {
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding: 0 2rem 2rem 2rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE/Edge */
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+}
+
+.carousel-card {
+    flex: 0 0 400px;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+    .carousel-card {
+        flex: 0 0 85vw;
+    }
+}
+
+.carousel-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    background-color: #f7f7f7;
+    margin-bottom: 1rem;
+}
+
+.card-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: none;
+    letter-spacing: 0;
+    width: 100%;
+    margin-bottom: 0.2rem;
+}
+
+.card-category {
+    color: #757575;
+    font-size: 1rem;
+}
+
+.card-price {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--white);
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.carousel-nav:hover {
+    background-color: #f0f0f0;
+}
+
+.nav-prev {
+    left: 1rem;
+}
+
+.nav-next {
+    right: 1rem;
+}
+
+/* P3: Featured Banner (Cinematic) */
+.section-p3 {
+    padding: 4rem 0;
+    background-color: var(--white);
+}
+
+.banner-container {
+    position: relative;
+    width: 100%;
+    height: 85vh;
+}
+
+.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.banner-title {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--white);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    text-align: center;
+    width: 100%;
+    padding: 0 1rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* P4: The Essentials */
+.section-p4 {
+    padding: 4rem 2rem 8rem 2rem;
+    background-color: var(--white);
+}
+
+.essentials-title {
+    font-size: clamp(3rem, 8vw, 4rem);
+    margin-bottom: 2rem;
+}
+
+.essentials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+    .essentials-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.grid-item {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    /* "Poster" aspect ratio */
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.grid-item:hover img {
+    transform: scale(1.03);
+}
+
+.grid-item .btn-overlay {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 2;
+}
+
+/* Contact Banner */
+.section-contact-banner {
+    padding: 10rem 2rem;
+    background-color: var(--black);
+    color: var(--white);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-title {
+    font-size: clamp(4rem, 10vw, 8rem);
+    margin-bottom: 1.5rem;
+}
+
+.contact-sub {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    margin-bottom: 3rem;
+    color: #ccc;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.btn-outline:hover {
+    background: var(--white);
+    color: var(--black);
+}
+
+/* 
+=========================================
+3. Footer
+=========================================
+*/
+.site-footer {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 4rem 2rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.footer-heading {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0;
+}
+
+.footer-heading-small {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    color: #ccc;
+    font-weight: 600;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: #7e7e7e;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--white);
+}
+
+.col-legal {
+    grid-column: 1 / -1;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+}
+
+.footer-links.horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}

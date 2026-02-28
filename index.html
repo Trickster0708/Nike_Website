@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike - Hungry For More</title>
+
+    <!-- Google Fonts: Antonio (700) and Archivo Narrow (500) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Archivo+Narrow:wght@500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- GSAP / ScrollTrigger / Lenis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Hero / Tiger Engine -->
+    <section id="hero-section">
+        <div class="canvas-container">
+            <canvas id="ambient-canvas"></canvas>
+            <canvas id="tiger-canvas"></canvas>
+            <div class="hero-text-overlay">
+                <h1 class="hero-title">HUNGRY FOR MORE</h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- Post-Hero Content -->
+    <main id="post-hero">
+        <!-- P1: Product Intro -->
+        <section class="section-p1">
+            <h4 class="eyebrow">First Look</h4>
+            <h2 class="title">NIKE AIR MAX PULSE</h2>
+            <p class="description">Push past your limits with the latest innovation in Air cushioning. Designed for
+                explosive speed and relentless energy return.</p>
+            <div class="actions">
+                <a href="#" class="btn btn-dark">Shop Now</a>
+            </div>
+            <div class="product-image-container">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=1200"
+                    alt="Nike Air Max Pulse" class="product-img">
+            </div>
+        </section>
+
+        <!-- P2: Carousel -->
+        <section class="section-p2">
+            <h2 class="carousel-title">Best of Air Max</h2>
+
+            <div class="carousel-wrapper">
+                <button class="carousel-nav nav-prev" aria-label="Previous">&larr;</button>
+                <div class="carousel-track">
+                    <div class="carousel-card">
+                        <img src="assets/images/air-max-1-new.jpg" alt="Air Max 1">
+                        <div class="card-info">
+                            <h3 class="card-title">Nike Air Max 1</h3>
+                            <p class="card-category">Men's Shoes</p>
+                            <p class="card-price">$150</p>
+                        </div>
+                    </div>
+                    <div class="carousel-card">
+                        <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&q=80&w=600"
+                            alt="Air Max 90">
+                        <div class="card-info">
+                            <h3 class="card-title">Nike Air Max 90</h3>
+                            <p class="card-category">Men's Shoes</p>
+                            <p class="card-price">$130</p>
+                        </div>
+                    </div>
+                    <div class="carousel-card">
+                        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=600"
+                            alt="Air Max 97">
+                        <div class="card-info">
+                            <h3 class="card-title">Nike Air Max 97</h3>
+                            <p class="card-category">Women's Shoes</p>
+                            <p class="card-price">$175</p>
+                        </div>
+                    </div>
+                    <!-- Duplicates for more scrolling room if needed -->
+                    <div class="carousel-card">
+                        <img src="assets/images/air-max-2021.jpg" alt="Air Max 2021">
+                        <div class="card-info">
+                            <h3 class="card-title">Nike Air Max 2021</h3>
+                            <p class="card-category">Older Kids' Shoes</p>
+                            <p class="card-price">$160</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-nav nav-next" aria-label="Next">&rarr;</button>
+            </div>
+        </section>
+
+        <!-- P3: Featured Banner -->
+        <section class="section-p3">
+            <div class="banner-container">
+                <img src="https://images.unsplash.com/photo-1514989940723-e8e51635b782?auto=format&fit=crop&q=80&w=1600"
+                    alt="Cinematic Nike Lifestyle" class="banner-img">
+                <h2 class="banner-title">STEP INTO WHAT FEELS GOOD</h2>
+            </div>
+        </section>
+
+        <!-- P4: The Essentials -->
+        <section class="section-p4">
+            <h2 class="essentials-title">The Essentials</h2>
+            <div class="essentials-grid">
+                <div class="grid-item">
+                    <img src="https://images.unsplash.com/photo-1579338559194-a162d19bf842?auto=format&fit=crop&q=80&w=600"
+                        alt="Men's Essentials">
+                    <a href="#" class="btn btn-overlay">Men's</a>
+                </div>
+                <div class="grid-item">
+                    <img src="assets/images/womens-essentials.jpg" alt="Women's Essentials">
+                    <a href="#" class="btn btn-overlay">Women's</a>
+                </div>
+                <div class="grid-item">
+                    <img src="assets/images/kids-essentials.jpg" alt="Kids' Essentials">
+                    <a href="#" class="btn btn-overlay">Kids'</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col col-icons">
+                <h4 class="footer-heading">Find a Store</h4>
+                <h4 class="footer-heading">Become a Member</h4>
+                <h4 class="footer-heading">Sign Up for Email</h4>
+                <h4 class="footer-heading">Student Discounts</h4>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-heading-small">Get Help</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Order Status</a></li>
+                    <li><a href="#">Delivery</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Payment Options</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-heading-small">About Nike</h4>
+                <ul class="footer-links">
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Investors</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                </ul>
+            </div>
+            <div class="footer-col col-legal">
+                <ul class="footer-links horizontal">
+                    <li><a href="#">&copy; 2026 Nike, Inc. All Rights Reserved</a></li>
+                    <li><a href="#">Guides</a></li>
+                    <li><a href="#">Terms of Sale</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Nike Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+.gitignore
+README.md
+*.pyc
+__pycache__/
+generate_frames.py
+.DS_Store
